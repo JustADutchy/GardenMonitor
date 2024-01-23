@@ -52,6 +52,7 @@ void setup() {
 }
 
 void loop() {
+  getAllSensorData();
   updateDisplay();
   delay(interval);
 }
@@ -77,7 +78,7 @@ void getTemperatureAir() {
 void getHumiditySoil() {
   digitalWrite(soilHumVCC, HIGH);             // Power the soil sensor ON
   delay(10);
-  int humiditySoil = analogRead(soilHumPin);  // Read current soil humidity
+  humiditySoil = analogRead(soilHumPin);  // Read current soil humidity
   delay(10);
   digitalWrite(soilHumVCC, LOW);              // Power the soil sensor OFF
   Serial.print("Humidity Soil:");             // Print to serial cuz why not
@@ -91,18 +92,28 @@ void getAllSensorData() {                     // Get ALL the data
   getHumiditySoil();
 }
 
-void updateDisplay() {                        // Display ALL the data | NOTE | For some reason X starts at -2 and Y starts at -5 (First pixel top left)
+void updateDisplay() {                        // Display ALL the data
   display.clearDisplay();                     // Clear buffer
   display.setTextSize(1);
   display.setTextColor(1);
-  display.setCursor(-2,-5);                   // Top Left test
-  display.print(".");
-  display.setCursor(122,-5);                  // Top Right test
-  display.print(".");
-  display.setCursor(-2,57);                   // Bottom Left test
-  display.print(".");
-  display.setCursor(122,57);                  // Bottom Right test
-  display.print(".");
+
+  display.setCursor(0,0);                     // Top Left
+  display.print("Humid. Air  |%|");
+  display.setCursor(96,0);
+  display.print(humidityAir);
+
+  display.setCursor(0,16);                     // Top Left
+  display.print("Temperature |c|");
+  display.setCursor(96,16);
+  display.print(temperatureAir);
+
+  display.setCursor(0,32);                     // Top Left
+  display.print("Humid. soil |%|");
+  display.setCursor(96,32);
+  display.print(humiditySoil);
+
+
+
   display.display();                          // Display changes made
   delay(1000);
 }
