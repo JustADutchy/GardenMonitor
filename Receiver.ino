@@ -5,6 +5,6 @@ void setup() {
 
 void loop() {
   while (Serial2.available()) {       // Check if HC12 has received data
-    Serial.write(Serial2.read());     //  Send the data to PC serial monitor
+    Serial.write(Serial2.read());     // Send the data to PC serial monitor
   }
 }
