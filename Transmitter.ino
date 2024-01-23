@@ -6,6 +6,7 @@
 #define soilHumPin 14           // Pin to read analog signal from soil humidity sensor
 #define DHTPIN 15               // Pin to read air temperature and humidity
 #define DHTTYPE DHT22           // Set DHT sensor type
+#define interval 2 * 1000       // Set interval in milliseconds and convert it to seconds
 
 // Variables ()
 float humidityAir;
@@ -28,11 +29,9 @@ void setup() {
 void loop() {
 //  Serial2.write("test");                  // Send data to HC-12 - DEBUG ONLY
 //  delay(1000);                            // Send data to HC-12 - DEBUG ONLY
-  getHumidityAir();
-  getTemperatureAir();
-  getHumiditySoil();
+  getAllSensorData();
   Serial.print("\n");
-  delay(2000);
+  delay(interval);
 }
 
 // Funky Functions
@@ -59,4 +58,10 @@ void getHumiditySoil() {
   Serial.print("Humidity Soil:");             // Print to serial cuz why not
   Serial.print(humiditySoil);
   Serial.print(" %\n");
+}
+
+void getAllSensorData() {
+  getHumidityAir();
+  getTemperatureAir();
+  getHumiditySoil();
 }
