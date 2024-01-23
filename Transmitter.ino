@@ -28,15 +28,15 @@ void setup() {
 void loop() {
 //  Serial2.write("test");                  // Send data to HC-12 - DEBUG ONLY
 //  delay(1000);                            // Send data to HC-12 - DEBUG ONLY
-  //getHumidityAir();
-  //getTemperatureAir();
+  getHumidityAir();
+  getTemperatureAir();
   getHumiditySoil();
+  Serial.print("\n");
   delay(2000);
 }
 
 // Funky Functions
 void getHumidityAir() {
-
   humidityAir = dht.readHumidity();           // Read current air humidity percentage
   Serial.print("Humidity: ");                 // Print to serial cuz why not
   Serial.print(humidityAir);
