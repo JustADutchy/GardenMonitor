@@ -2,34 +2,35 @@
 #include <DHT.h>
 
 // Definitions (What is the meaning of life?)
-#define soilHumVCC 12                       // Pin to enable power to soil humidity sensor
-#define soilHumPin 14                       // Pin to read analog signal from soil humidity sensor
-#define DHTPIN 15                           // Pin to read air temperature and humidity
-#define DHTTYPE DHT22                       // Set DHT sensor type
-#define interval 2 * 1000                   // Set interval in milliseconds and convert it to seconds
+#define soilHumVCC 12                         // Pin to enable power to soil humidity sensor
+#define soilHumPin 14                         // Pin to read analog signal from soil humidity sensor
+#define DHTPIN 15                             // Pin to read air temperature and humidity
+#define DHTTYPE DHT22                         // Set DHT sensor type
+#define interval 2 * 1000                     // Set interval in milliseconds and convert it to seconds
 
 // Variables ()
-float humidityAir;
-float temperatureAir;
+float humidityAir;                            // Store air humidity
+float temperatureAir;                         // Store air temperature
+int humiditySoil;                             // Store soil humidity
 
 // No clue what to label this
-DHT dht(DHTPIN, DHTTYPE);                   // Create DHT sensor
+DHT dht(DHTPIN, DHTTYPE);                     // Create DHT sensor
 
 void setup() {
-  pinMode (soilHumVCC, OUTPUT);             //
-  pinMode (soilHumPin, INPUT);              //
-  pinMode (DHTPIN, INPUT);                  //
+  pinMode (soilHumVCC, OUTPUT);
+  pinMode (soilHumPin, INPUT);
+  pinMode (DHTPIN, INPUT);
 
-  Serial.begin(9600);                       // Serial port to Computer
-  Serial2.begin(9600);                      // Serial port to HC12
-  dht.begin();                              // Start DHT sensor
+  Serial.begin(9600);                         // Serial port to Computer
+  Serial2.begin(9600);                        // Serial port to HC12
+  dht.begin();                                // Start DHT sensor
 
 }
 
 void loop() {
-//  Serial2.write("test");                  // Send data to HC-12 - DEBUG ONLY
-//  delay(1000);                            // Send data to HC-12 - DEBUG ONLY
-  getAllSensorData();
+//  Serial2.write("test");                    // Send data to HC-12 - DEBUG ONLY
+//  delay(1000);                              // Send data to HC-12 - DEBUG ONLY
+  getAllSensorData();                         
   Serial.print("\n");
   delay(interval);
 }
