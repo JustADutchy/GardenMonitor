@@ -44,8 +44,7 @@ void setup() {
   Serial2.begin(9600);                        // Serial port to HC12
   dht.begin();                                // Start DHT sensor
 
-  display.begin(SSD1306_SWITCHCAPVCC, 0x3C);
-  delay(100);
+  display.begin(SSD1306_SWITCHCAPVCC, 0x3C);  // Initialize the OLED
   display.clearDisplay();
   display.display();
 
@@ -116,5 +115,4 @@ void updateDisplay() {                        // Display ALL the sensor data
   display.print(humiditySoil);
 
   display.display();                          // Display changes made
-  delay(1000);
 }
