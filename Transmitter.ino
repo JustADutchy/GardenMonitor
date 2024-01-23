@@ -92,27 +92,25 @@ void getAllSensorData() {                     // Get ALL the data
   getHumiditySoil();
 }
 
-void updateDisplay() {                        // Display ALL the data
+void updateDisplay() {                        // Display ALL the sensor data
   display.clearDisplay();                     // Clear buffer
   display.setTextSize(1);
   display.setTextColor(1);
 
-  display.setCursor(0,0);                     // Top Left
+  display.setCursor(0,0);                     // Update air humidity on OLED
   display.print("Humid. Air  |%|");
   display.setCursor(96,0);
   display.print(humidityAir);
 
-  display.setCursor(0,16);                     // Top Left
+  display.setCursor(0,16);                    // Update temperature on OLED
   display.print("Temperature |c|");
   display.setCursor(96,16);
   display.print(temperatureAir);
 
-  display.setCursor(0,32);                     // Top Left
+  display.setCursor(0,32);                    // Update soil humidity on OLED
   display.print("Humid. soil |%|");
   display.setCursor(96,32);
   display.print(humiditySoil);
-
-
 
   display.display();                          // Display changes made
   delay(1000);
