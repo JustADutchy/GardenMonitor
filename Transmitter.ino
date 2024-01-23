@@ -92,6 +92,9 @@ void getAllSensorData() {                     // Get ALL the data
   getHumiditySoil();
 }
 
+//===========================================
+// V This shit needs alot of work, sleep first tho. At least its functional
+//===========================================
 void updateDisplay() {                        // Display ALL the sensor data
   display.clearDisplay();                     // Clear buffer
   display.setTextSize(1);
