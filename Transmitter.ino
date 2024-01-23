@@ -61,7 +61,7 @@ void getHumiditySoil() {
   Serial.print(" %\n");
 }
 
-void getAllSensorData() {
+void getAllSensorData() {                     // Get ALL the data
   getHumidityAir();
   getTemperatureAir();
   getHumiditySoil();
