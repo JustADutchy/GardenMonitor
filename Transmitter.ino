@@ -1,19 +1,32 @@
+//===========================================
 // Libraries (Shhhh!)
-#include <DHT.h>
+//===========================================
+#include <DHT.h>                              // Library for temp & humidity sensor
+#include <Wire.h>                             // I2C-0 SCL pin 19, SDA pin 18
+#include <Adafruit_GFX.h>                     // Library for OLED
+#include <Adafruit_SSD1306.h>                 // Library for OLED
 
+//===========================================
 // Definitions (What is the meaning of life?)
+//===========================================
 #define soilHumVCC 12                         // Pin to enable power to soil humidity sensor
 #define soilHumPin 14                         // Pin to read analog signal from soil humidity sensor
 #define DHTPIN 15                             // Pin to read air temperature and humidity
 #define DHTTYPE DHT22                         // Set DHT sensor type
 #define interval 2 * 1000                     // Set interval in milliseconds and convert it to seconds
 
+
+//===========================================
 // Variables ()
+//===========================================
 float humidityAir;                            // Store air humidity
 float temperatureAir;                         // Store air temperature
 int humiditySoil;                             // Store soil humidity
 
+
+//===========================================
 // No clue what to label this
+//===========================================
 DHT dht(DHTPIN, DHTTYPE);                     // Create DHT sensor
 
 void setup() {
@@ -35,7 +48,10 @@ void loop() {
   delay(interval);
 }
 
+
+//===========================================
 // Funky Functions
+//===========================================
 void getHumidityAir() {
   humidityAir = dht.readHumidity();           // Read current air humidity percentage
   Serial.print("Humidity: ");                 // Print to serial cuz why not
