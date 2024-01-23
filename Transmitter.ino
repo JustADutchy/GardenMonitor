@@ -13,7 +13,13 @@
 #define soilHumPin 14                         // Pin to read analog signal from soil humidity sensor
 #define DHTPIN 15                             // Pin to read air temperature and humidity
 #define DHTTYPE DHT22                         // Set DHT sensor type
+
 #define interval 2 * 1000                     // Set interval in milliseconds and convert it to seconds
+
+#define SCREEN_WIDTH 128                      // OLED display width
+#define SCREEN_HEIGHT 64                      // OLED display height
+
+Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, -1, 1000000);    // Setup the OLED
 
 
 //===========================================
@@ -38,13 +44,15 @@ void setup() {
   Serial2.begin(9600);                        // Serial port to HC12
   dht.begin();                                // Start DHT sensor
 
+  display.begin(SSD1306_SWITCHCAPVCC, 0x3C);
+  delay(100);
+  display.clearDisplay();
+  display.display();
+
 }
 
 void loop() {
-//  Serial2.write("test");                    // Send data to HC-12 - DEBUG ONLY
-//  delay(1000);                              // Send data to HC-12 - DEBUG ONLY
-  getAllSensorData();                         
-  Serial.print("\n");
+  updateDisplay();
   delay(interval);
 }
 
@@ -81,4 +89,20 @@ void getAllSensorData() {                     // Get ALL the data
   getHumidityAir();
   getTemperatureAir();
   getHumiditySoil();
+}
+
+void updateDisplay() {                        // Display ALL the data | NOTE | For some reason X starts at -2 and Y starts at -5 (First pixel top left)
+  display.clearDisplay();                     // Clear buffer
+  display.setTextSize(1);
+  display.setTextColor(1);
+  display.setCursor(-2,-5);                   // Top Left test
+  display.print(".");
+  display.setCursor(122,-5);                  // Top Right test
+  display.print(".");
+  display.setCursor(-2,57);                   // Bottom Left test
+  display.print(".");
+  display.setCursor(122,57);                  // Bottom Right test
+  display.print(".");
+  display.display();                          // Display changes made
+  delay(1000);
 }
