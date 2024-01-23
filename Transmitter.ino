@@ -35,7 +35,6 @@ void loop() {
 }
 
 // Funky Functions
-
 void getHumidityAir() {
 
   humidityAir = dht.readHumidity();           // Read current air humidity percentage
