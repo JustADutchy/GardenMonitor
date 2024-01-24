@@ -19,11 +19,11 @@
 #define SCREEN_WIDTH 128                      // OLED display width
 #define SCREEN_HEIGHT 64                      // OLED display height
 
-Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, -1, 1000000);    // Setup the OLED
+
 
 
 //===========================================
-// Variables ()
+// Variables
 //===========================================
 float humidityAir;                            // Store air humidity
 float temperatureAir;                         // Store air temperature
@@ -33,7 +33,8 @@ int humiditySoil;                             // Store soil humidity
 //===========================================
 // No clue what to label this
 //===========================================
-DHT dht(DHTPIN, DHTTYPE);                     // Create DHT sensor
+DHT dht(DHTPIN, DHTTYPE);                     // Setup the DHT sensor
+Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, -1, 1000000);    // Setup the OLED
 
 void setup() {
   pinMode (soilHumVCC, OUTPUT);
