@@ -36,6 +36,10 @@ int humiditySoil;                             // Store soil humidity
 DHT dht(DHTPIN, DHTTYPE);                     // Setup the DHT sensor
 Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, -1, 1000000);    // Setup the OLED
 
+
+//===========================================
+// Actually do things
+//===========================================
 void setup() {
   pinMode (soilHumVCC, OUTPUT);
   pinMode (soilHumPin, INPUT);
