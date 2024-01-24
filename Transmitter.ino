@@ -58,7 +58,7 @@ void setup() {
 void loop() {
   getAllSensorData();
   updateDisplay();
-  delay(interval);
+  delay(interval);                            // Replace delay with something smarter sometime 
 }
 
 
