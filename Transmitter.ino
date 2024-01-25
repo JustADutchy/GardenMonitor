@@ -97,7 +97,7 @@ void getAllSensorData() {                     // Get ALL the data
 }
 
 //===========================================
-// V This shit needs alot of work, sleep first tho. At least its functional
+// V This shit needs alot of work, sleep first tho. At least it is functional
 //===========================================
 void updateDisplay() {                        // Display ALL the sensor data
   display.clearDisplay();                     // Clear buffer
