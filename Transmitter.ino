@@ -2,7 +2,7 @@
 // Libraries (Shhhh!)
 //===========================================
 #include <DHT.h>                              // Library for temp & humidity sensor
-#include <Wire.h>                             // I2C-0 SCL pin 19, SDA pin 18
+#include <Wire.h>                             // Library for I2C(0) SCL pin 19, SDA pin 18
 #include <Adafruit_GFX.h>                     // Library for OLED
 #include <Adafruit_SSD1306.h>                 // Library for OLED
 
