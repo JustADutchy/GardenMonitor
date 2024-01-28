@@ -32,8 +32,6 @@ void getAllSensorData() {                     // Get ALL the data
 
 void updateDisplay() {                        // Display ALL the sensor data
   display.clearDisplay();                     // Clear buffer
-  display.setTextSize(1);
-  display.setTextColor(1);
 
   display.setCursor(0,0);                     // Update air humidity on OLED
   display.print("Humid. Air  |%|");
