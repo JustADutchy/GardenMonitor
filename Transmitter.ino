@@ -10,7 +10,7 @@
 //===========================================
 // Definitions (What is the meaning of life?)
 //===========================================
-#define pin_Pump 8          // Pin to enable/disable pump
+#define pin_Pump 6          // Pin to enable/disable pump
 #define pin_soilHumVCC 12   // Pin to enable power to soil humidity sensor
 #define pin_soilHumData 14  // Pin to read analog signal from soil humidity sensor
 #define pin_DHT 15          // Pin to read air temperature and humidity
@@ -50,6 +50,7 @@ void setup() {
   pinMode(pin_soilHumVCC, OUTPUT);  // Pin turns on soil humidity sensor
   pinMode(pin_soilHumData, INPUT);  // Pin that reads data from soil humidity sensor
   pinMode(pin_DHT, INPUT);          // Pin that reads data from Air humidity & Temp sensor
+  pinMode(pin_Pump, OUTPUT);
 
   Serial.begin(9600);   // Serial port to Computer
   Serial2.begin(9600);  // Serial port to HC12
@@ -66,6 +67,7 @@ void loop() {
   updateDisplay();     // Updates the display with new sensor status (duh)
   delay(interval);     // Replace delay with something smarter sometime
   transmitData();      // Transmit new sensor data over HC12
+  //pumpControl();
 }
 
 
@@ -154,9 +156,14 @@ void transmitData() {
   Serial2.println(humiditySoil);
   Serial2.print("Temperature Air:");
   Serial2.println(temperatureAir, 1);
+  Serial.println("Transmitting");
 }
 
 void pumpControl() {
-  while (humiditySoil < minHumiditySoil) {
+  if (humiditySoil < minHumiditySoil) {
+    digitalWrite(pin_Pump, HIGH);
+    delay(2000);
+    digitalWrite(pin_Pump, LOW);
   }
+  
 }
